@@ -7,7 +7,7 @@
 </head>
 
 <body>
-    hello from duy htmlsss
+    hello from jsp
 </body>
 
 </html>
