@@ -15,6 +15,7 @@ public class User {
     private String fullName;
     private String address;
     private String phone;
+    private String avatar;
 
     // Constructor không tham số
     public User() {}
@@ -28,7 +29,7 @@ public class User {
         this.address = address;
         this.phone = phone;
     }
-
+    
     // Getter và Setter
     public long getId() {
         return id;
@@ -88,6 +89,15 @@ public class User {
                 ", fullName='" + fullName + '\'' +
                 ", address='" + address + '\'' +
                 ", phone='" + phone + '\'' +
+                ", avatar='" + avatar +'\'' +
                 '}';
+    }
+
+    public String getAvatar() {
+        return avatar;
+    }
+
+    public void setAvatar(String avatar) {
+        this.avatar = avatar;
     }
 }
