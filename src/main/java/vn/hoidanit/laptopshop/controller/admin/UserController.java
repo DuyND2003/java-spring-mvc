@@ -27,7 +27,7 @@ public class UserController {
     private final PasswordEncoder passwordEncoder;
     // dependency injection 
 
-    public UserController(UserService userService, UploadService uploadService, PasswordEncoder passwordEncoder) {
+    public UserController( UploadService uploadService, UserService userService,PasswordEncoder passwordEncoder) {
         this.userService = userService;
         this.uploadService = uploadService;
         this.passwordEncoder = passwordEncoder;
