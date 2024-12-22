@@ -58,7 +58,6 @@ public class UserController {
         model.addAttribute("id", id);
         return "admin/user/detail";
 
-
     }
     @GetMapping("/admin/user/create") // GET 
     public String getCreateUserPage(Model model){
