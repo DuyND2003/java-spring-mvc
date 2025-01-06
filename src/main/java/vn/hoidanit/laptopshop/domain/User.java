@@ -11,8 +11,8 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 
 @Entity
 @Table(name ="users")
@@ -24,10 +24,10 @@ public class User {
     @Email(message= "Email khong hop le", regexp = "^[a-zA-Z0-9_!#$%&'*+/=?`{|}~^.-]+@[a-zA-Z0-9.-]+$")
     private String email;   
     @NotNull
-    @Min(value = 2, message= "Pass phai co 2 ki tu tro len")
+    @Size(min = 2, message= "Pass phai co 2 ki tu tro len")
     private String password;
     @NotNull
-    @Min(value = 2, message= "Pass phai co 2 ki tu tro len ")
+    @Size(min = 2, message= "Pass phai co 2 ki tu tro len ")
     private String fullName;
     private String address;
     private String phone;
