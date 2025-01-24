@@ -10,7 +10,7 @@
                 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
                 <meta name="description" content="" />
                 <meta name="author" content="" />
-                <title>Login - Laptopshop</title>
+                <title>Register - Laptopshop</title>
                 <link href="/css/styles.css" rel="stylesheet" />
                 <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
             </head>
@@ -21,45 +21,83 @@
                         <main>
                             <div class="container">
                                 <div class="row justify-content-center">
-                                    <div class="col-lg-5">
+                                    <div class="col-lg-7">
                                         <div class="card shadow-lg border-0 rounded-lg mt-5">
                                             <div class="card-header">
-                                                <h3 class="text-center font-weight-light my-4">Login</h3>
+                                                <h3 class="text-center font-weight-light my-4">Create Account</h3>
                                             </div>
                                             <div class="card-body">
-                                                <form method="post" action="/login">
-                                                    <c:if test="${param.error != null}">
-                                                        <div class="my-2" style="color: red;">Invalid email or password.
+                                                <form:form method="post" action="/register"
+                                                    modelAttribute="registerUser">
+                                                    <c:set var="errorPassword">
+                                                        <form:errors path="confirmPassword"
+                                                            cssClass="invalid-feedback" />
+                                                    </c:set>
+                                                    <c:set var="errorEmail">
+                                                        <form:errors path="email" cssClass="invalid-feedback" />
+                                                    </c:set>
+
+                                                    <c:set var="errorFirstName">
+                                                        <form:errors path="firstName" cssClass="invalid-feedback" />
+                                                    </c:set>
+                                                    <div class="row mb-3">
+                                                        <div class="col-md-6">
+                                                            <div class="form-floating mb-3 mb-md-0">
+                                                                <form:input
+                                                                    class="form-control ${not empty errorFirstName ? 'is-invalid' : ''}"
+                                                                    type="text" placeholder="Enter your first name"
+                                                                    path="firstName" />
+                                                                <label for="inputFirstName">First name</label>
+                                                                ${errorFirstName}
+                                                            </div>
                                                         </div>
-                                                    </c:if>
-
+                                                        <div class="col-md-6">
+                                                            <div class="form-floating">
+                                                                <form:input class="form-control" type="text"
+                                                                    placeholder="Enter your last name"
+                                                                    path="lastName" />
+                                                                <label for="inputLastName">Last name</label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
                                                     <div class="form-floating mb-3">
-                                                        <input class="form-control" type="email"
-                                                            placeholder="name@example.com" name="username" />
+                                                        <form:input
+                                                            class="form-control ${not empty errorEmail ? 'is-invalid' : ''}"
+                                                            type="email" placeholder="name@example.com" path="email" />
                                                         <label>Email address</label>
+                                                        ${errorEmail}
                                                     </div>
-                                                    <div class="form-floating mb-3">
-                                                        <input class="form-control" type="password"
-                                                            placeholder="Password" name="password" />
-                                                        <label>Password</label>
+                                                    <div class="row mb-3">
+                                                        <div class="col-md-6">
+                                                            <div class="form-floating mb-3 mb-md-0">
+                                                                <form:input
+                                                                    class="form-control ${not empty errorPassword ? 'is-invalid' : ''}"
+                                                                    type="password" placeholder="Create a password"
+                                                                    path="password" />
+                                                                <label>Password</label>
+                                                                ${errorPassword}
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <div class="form-floating mb-3 mb-md-0">
+                                                                <form:input class="form-control" type="password"
+                                                                    placeholder="Confirm password"
+                                                                    path="confirmPassword" />
+                                                                <label>Confirm Password</label>
+                                                            </div>
+                                                        </div>
                                                     </div>
-                                                    <div>
-                                                        <input type="hidden" name="${_csrf.parameterName}"
-                                                            value="${_csrf.token}" />
-
-                                                    </div>
-
                                                     <div class="mt-4 mb-0">
                                                         <div class="d-grid">
                                                             <button class="btn btn-primary btn-block">
-                                                                Login
+                                                                Create Account
                                                             </button>
                                                         </div>
                                                     </div>
-                                                </form>
+                                                </form:form>
                                             </div>
                                             <div class="card-footer text-center py-3">
-                                                <div class="small"><a href="/register">Need an account? Sign up!</a>
+                                                <div class="small"><a href="/login">Have an account? Go to login</a>
                                                 </div>
                                             </div>
                                         </div>
